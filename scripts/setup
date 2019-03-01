@@ -1,0 +1,15 @@
+#!/bin/bash
+
+if [[ "$OSTYPE" == "darwin"* ]]; then
+  sed_flags="-i ''"
+else
+  sed_flags='-i'
+fi
+
+if [ ! -f 'docker/docker.env' ]; then
+  cp docker/docker.env{.sample,}
+fi
+
+[ -x "$(command -v docker-compose)" ] || ( echo 'Please install docker-compose before continuing' && exit 1 )
+
+docker-compose build

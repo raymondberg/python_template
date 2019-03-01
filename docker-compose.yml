@@ -1,0 +1,11 @@
+version: '2'
+services:
+  python_template:
+    build:
+      context: .
+      dockerfile: docker/python_template/Dockerfile
+    container_name: python_template
+    env_file:
+      - docker/docker.env
+    volumes:
+      - ./:/var/app/
